@@ -1,0 +1,685 @@
+/* ==========================================================================
+   1. GLOBAL STYLES & RESET
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary-color: #0f2042;   /* Royal Deep Blue */
+    --accent-color: #c5a059;    /* Premium Luxury Gold */
+    --dark-bg: #0a1428;         /* Rich Dark Navy */
+    --light-bg: #fdfdfd;        /* Pearl White Background */
+    --whatsapp-green: #25d366;  /* Official WhatsApp Green */
+    --text-color: #2c3e50;
+    --text-muted: #7f8c8d;
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. TOP AESTHETIC PANEL
+   ========================================================================== */
+.top-bar {
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    font-size: 0.85rem;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.top-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.contact-info a {
+    color: #e2e8f0;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-info a i, .working-hours i {
+    color: var(--accent-color);
+    margin-right: 6px;
+}
+
+.contact-info a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   3. MAIN HEADER NAVIGATION
+   ========================================================================== */
+.main-header {
+    background: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h2 {
+    color: var(--primary-color);
+    font-family: 'Marcellus', serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
+
+.logo span {
+    color: var(--accent-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    letter-spacing: 0.5px;
+}
+
+.navbar a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    color: var(--accent-color);
+}
+
+.whatsapp-btn-nav {
+    background-color: var(--whatsapp-green);
+    color: white;
+    text-decoration: none;
+    padding: 9px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn-nav:hover {
+    background-color: #1ebd56;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* ==========================================================================
+   4. HERO BANNER SECTION
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(rgba(15, 32, 66, 0.82), rgba(10, 20, 40, 0.88)), 
+                url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Marcellus', serif;
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 750px;
+    margin: 0 auto 35px;
+    font-weight: 300;
+    color: #e2e8f0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 35px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #bfa150;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 1.5px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   5. APPLIANCE SERVICES SECTION
+   ========================================================================== */
+.services-section {
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+    padding: 0 10px;
+}
+
+.section-title h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 2.4rem;
+    color: var(--primary-color);
+}
+
+.section-title .line {
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 15px auto;
+}
+
+.section-title p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+}
+
+.service-img img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+}
+
+.service-info {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.service-icon {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.service-info h3 {
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-family: 'Marcellus', serif;
+}
+
+.service-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. WHY CHOOSE US SECTION
+   ========================================================================== */
+.about-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 70px 0;
+}
+
+.about-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 320px;
+}
+
+.about-text h2 {
+    font-family: 'Marcellus', serif;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.features-list {
+    list-style: none;
+    margin-top: 25px;
+}
+
+.features-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.features-list li i {
+    color: var(--accent-color);
+    margin-top: 5px;
+}
+
+.about-banner-box {
+    background: linear-gradient(135deg, #162e5c, #0a1428);
+    padding: 50px 40px;
+    border-radius: 6px;
+    text-align: center;
+    flex: 0 1 380px;
+    border: 1px solid var(--accent-color);
+}
+
+.about-banner-box h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   7. VIBRANT CONTACT CARDS
+   ========================================================================== */
+.booking-section {
+    padding: 90px 0;
+    background-color: #f8fafc;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.contact-card {
+    padding: 40px 25px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.contact-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.contact-card p {
+    color: #f5f6fa;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.contact-card a {
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+/* Gradients for Contact Cards */
+.call-card { background: linear-gradient(135deg, #c5a059, #b08d46); color: white; }
+.call-card i { font-size: 2.8rem; color: #ffffff; margin-bottom: 15px; }
+.call-card .phone-link { background-color: rgba(255, 255, 255, 0.2); color: white; padding: 8px 20px; border-radius: 20px; }
+
+.whatsapp-card { background: linear-gradient(135deg, var(--whatsapp-green), #1ebd56); color: white; }
+.whatsapp-card i { font-size: 2.8rem; color: #ffffff; margin-bottom: 15px; }
+.whatsapp-card .whatsapp-link { background-color: white; color: #1ebd56; padding: 8px 20px; border-radius: 20px; }
+
+.email-card { background: linear-gradient(135deg, var(--primary-color), var(--dark-bg)); color: white; border: 1px solid rgba(197, 160, 89, 0.3); }
+.email-card i { font-size: 2.8rem; color: var(--accent-color); margin-bottom: 15px; }
+.email-card .email-link { color: var(--accent-color); border-bottom: 1px dashed var(--accent-color); font-size: 1rem; }
+
+/* Separator Divider */
+.form-separator {
+    text-align: center;
+    margin: 50px 0;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1.2px;
+    color: var(--accent-color);
+    position: relative;
+}
+.form-separator::before, .form-separator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 1px;
+    background-color: #dcdde1;
+}
+.form-separator::before { left: 0; }
+.form-separator::after { right: 0; }
+
+/* ==========================================================================
+   8. PREMIUM BOOKING FORM
+   ========================================================================== */
+.form-container {
+    max-width: 750px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 6px;
+    box-shadow: 0 15px 35px rgba(15, 32, 66, 0.05);
+    border-top: 4px solid var(--primary-color);
+}
+
+.form-inside-title {
+    font-family: 'Marcellus', serif;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    padding: 12px 15px;
+    border: 1px solid #dcdde1;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.submit-form-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.submit-form-btn:hover {
+    background-color: #162e5c;
+}
+
+.success-alert {
+    display: none;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--dark-bg);
+    color: #a4b0be;
+    text-align: center;
+    padding: 35px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+/* ==========================================================================
+   10. FLOATING ACTION BUTTONS
+   ========================================================================== */
+.floating-btn {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    z-index: 1000;
+    transition: transform 0.3s;
+    text-decoration: none;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--whatsapp-green);
+}
+
+.phone-float {
+    bottom: 85px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   11. SUPER-RESPONSIVE SMARTPHONE MEDIA QUERY (CRITICAL FOR MOBILE VIEW)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Top Bar Grid Adjustment */
+    .top-bar-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 5px 0;
+    }
+    .contact-info {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Elegant Mobile Menu Stacking */
+    .header-container {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    .navbar {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 15px;
+        margin: 5px 0;
+    }
+    .navbar a {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    .whatsapp-btn-nav {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+    }
+
+    /* Hero Text Shrinking to fit Mobile Displays */
+    .hero-section {
+        height: auto;
+        padding: 60px 0;
+    }
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 15px;
+    }
+    .btn {
+        margin: 0;
+        width: 100%;
+        padding: 14px;
+    }
+
+    /* Section Titles Responsive Spacing */
+    .services-section, .booking-section, .about-section {
+        padding: 50px 0;
+    }
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    /* Stacking Grids into Single Clean Column */
+    .services-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .service-img img {
+        height: 200px;
+    }
+
+    /* About Section stacking */
+    .about-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-text h2 {
+        font-size: 1.7rem;
+    }
+    .about-banner-box {
+        flex: unset;
+        width: 100%;
+        padding: 35px 20px;
+    }
+
+    /* Forms Field Alignment on Small Touchscreens */
+    .form-separator::before, .form-separator::after {
+        width: 10%; /* Makes space for text on narrow screens */
+    }
+    .form-container {
+        padding: 25px 20px;
+    }
+    .form-group-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .form-inside-title {
+        font-size: 1.3rem;
+    }
+
+    /* Thicker & Larger Sticky Buttons for Easier Tapping */
+    .floating-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
+    }
+    .whatsapp-float { bottom: 15px; right: 15px; }
+    .phone-float { bottom: 85px; right: 15px; }
+}
