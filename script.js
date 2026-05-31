@@ -1,63 +1,78 @@
-// Dynamic Header Navigation Active Link Tracker
-window.addEventListener('scroll', () => {
-    let sections = document.querySelectorAll('section');
-    let navLinks = document.querySelectorAll('.navbar a');
-
-    sections.forEach(section => {
-        let top = window.scrollY;
-        let offset = section.offsetTop - 160;
-        let height = section.offsetHeight;
-        let id = section.getAttribute('id');
-
-        if (top >= offset && top < offset + height) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + id) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
-
-// Form Data Direct to WhatsApp Integration
+// Form Data Store in Database & Redirect to WhatsApp
 document.getElementById('repairContactForm').addEventListener('submit', function(e) {
     e.preventDefault(); // Page refresh hone se rokta hai
 
-    // Form se customer ka data nikalna
+    // Form data collect karna
     const name = document.getElementById('fullName').value;
     const phone = document.getElementById('phoneNumber').value;
     const city = document.getElementById('serviceCity').value;
     const service = document.getElementById('applianceType').value;
     const issue = document.getElementById('issueDetails').value;
 
-    // Aapka WhatsApp Number (Country code ke saath, bina '+' ya spaces ke)
-    const whatsappNumber = "971547372355";
+    // AJAX / Fetch API ke zariye data 'insert.php' ko bhejna (Database mein save karne ke liye)
+    const formData = new FormData();
+    formData.append('fullname', name);
+    formData.append('phone', phone);
+    formData.append('city', city);
+    formData.append('service', service);
+    formData.append('issue', issue);
 
-    // Ek pyara aur professional message format taiyar karna
-    const message = `*NEW BOOKING REQUEST - MUSHTAQ REPAIRING* \n\n` +
-                    `👤 *Customer Name:* ${name}\n` +
-                    `📞 *Phone Number:* ${phone}\n` +
-                    `📍 *Location/City:* ${city}\n` +
-                    `🛠️ *Service Required:* ${service}\n` +
-                    `📝 *Issue Details:* ${issue}`;
-
-    // Message ko URL format mein encode karna taaki WhatsApp samajh sake
-    const encodedMessage = encodeURIComponent(message);
-
-    // WhatsApp API ka link taiyar karna
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-
-    // Screen par success message dikhana
     const alertBox = document.getElementById('formSuccessMessage');
     alertBox.style.display = 'block';
-    alertBox.innerHTML = "Opening WhatsApp... Please send the pre-filled message to complete your booking.";
+    alertBox.style.backgroundColor = '#d1ecf1';
+    alertBox.style.color = '#0c5460';
+    alertBox.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> Saving booking securely & opening WhatsApp...";
 
-    // Form ko reset karna
-    document.getElementById('repairContactForm').reset();
+    fetch('insert.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === 'success') {
+            // WhatsApp Message Format Setup
+            const whatsappNumber = "971547372355";
+            const message = `*NEW BOOKING LOGGED & SAVED* \n\n` +
+                            `👤 *Name:* ${name}\n` +
+                            `📞 *Phone:* ${phone}\n` +
+                            `📍 *City:* ${city}\n` +
+                            `🛠️ *Service:* ${service}\n` +
+                            `📝 *Issue:* ${issue}`;
 
-    // 1.5 seconds ke baad customer ko auto-redirect karna unke WhatsApp par
-    setTimeout(() => {
-        window.open(whatsappURL, '_blank');
-    }, 1500);
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // Form reset karna
+            document.getElementById('repairContactForm').reset();
+
+            // 1.5 seconds ke baad WhatsApp open karna
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                alertBox.style.backgroundColor = '#d4edda';
+                alertBox.style.color = '#155724';
+                alertBox.innerHTML = "<i class='fa-solid fa-circle-check'></i> Booking saved in database and sent to WhatsApp!";
+            }, 1500);
+        } else {
+            alertBox.style.backgroundColor = '#f8d7da';
+            alertBox.style.color = '#721c24';
+            alertBox.innerHTML = "Error saving data. Please contact via direct WhatsApp.";
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Agar database down bhi ho, tab bhi client ko direct WhatsApp par bhej diya jaye
+        window.open(`https://wa.me/971547372355?text=${encodeURIComponent(name + ' - ' + service)}`, '_blank');
+    });
+});
+document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+        const item = button.parentElement;
+
+        // close others (optional nice UX)
+        document.querySelectorAll(".faq-item").forEach(faq => {
+            if (faq !== item) faq.classList.remove("active");
+        });
+
+        item.classList.toggle("active");
+    });
 });
